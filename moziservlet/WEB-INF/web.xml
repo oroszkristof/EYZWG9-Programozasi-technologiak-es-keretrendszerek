@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+<servlet>
+    <servlet-name>VetitesListaServlet</servlet-name>
+    <servlet-class>com.kristof.servlet.VetitesListaServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>VetitesListaServlet</servlet-name>
+    <url-pattern>/vetitesek</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ErtekelesLista</servlet-name>
+    <servlet-class>com.kristof.servlet.ErtekelesListaServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ErtekelesLista</servlet-name>
+    <url-pattern>/ertekelesek</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ErtekelesFelvitel</servlet-name>
+    <servlet-class>com.kristof.servlet.ErtekelesFelvitelServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ErtekelesFelvitel</servlet-name>
+    <url-pattern>/ertekeles-felvitel</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>FoglalasServlet</servlet-name>
+    <servlet-class>com.kristof.servlet.FoglalasServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>FoglalasServlet</servlet-name>
+    <url-pattern>/foglalas</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>FoglalasListaServlet</servlet-name>
+    <servlet-class>com.kristof.servlet.FoglalasListaServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>FoglalasListaServlet</servlet-name>
+    <url-pattern>/foglalasok</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>Index</servlet-name>
+    <servlet-class>com.kristof.servlet.IndexServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/index</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+    <servlet-name>Kijelentkezes</servlet-name>
+    <servlet-class>com.kristof.servlet.KijelentkezesServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Kijelentkezes</servlet-name>
+    <url-pattern>/kijelentkezes</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+    <servlet-name>Regisztracio</servlet-name>
+    <servlet-class>com.kristof.servlet.RegisztracioServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Regisztracio</servlet-name>
+    <url-pattern>/regisztracio</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+    <servlet-name>Bejelentkezes</servlet-name>
+    <servlet-class>com.kristof.servlet.BejelentkezesServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Bejelentkezes</servlet-name>
+    <url-pattern>/bejelentkezes</url-pattern>
+</servlet-mapping>
+
+
+</web-app>
+
