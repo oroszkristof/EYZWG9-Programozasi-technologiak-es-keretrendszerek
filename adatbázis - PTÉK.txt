@@ -1,0 +1,73 @@
+CREATE mozirendszer;
+
+
+CREATE TABLE vetites (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cim VARCHAR(200) NOT NULL,
+    leiras TEXT,
+    mufaj VARCHAR(100),
+    hossz INT,
+    idopont DATETIME,
+    ar INT
+);
+
+INSERT INTO vetites (cim, leiras, mufaj, hossz, idopont, ar) VALUES
+('Családi Kalandok', 'Könnyed családi film', 'Családi', 102, '2026-01-03 16:30:00', 1800),
+('A Vadon Szava', 'Természetfilm a vadonról', 'Természetfilm', 94, '2026-01-05 18:00:00', 2100),
+('A Föld Titkai', 'Dokumentumfilm a bolygónkról', 'Dokumentumfilm', 88, '2026-01-08 19:45:00', 2000),
+('Téli Mesék', 'Családi történetek a télről', 'Családi', 99, '2026-01-11 15:00:00', 1850),
+('Óceán Mélyén', 'Természetfilm a tengerekről', 'Természetfilm', 91, '2026-01-15 20:00:00', 2200),
+('Idők Tanúi', 'Történelmi dokumentumfilm', 'Dokumentumfilm', 113, '2026-01-18 17:00:00', 2300),
+('Vidám Otthon', 'Aranyos családi film', 'Családi', 96, '2026-01-21 14:30:00', 1700),
+('Állati Kalandok', 'Állatokról szóló film', 'Természetfilm', 103, '2026-01-25 18:45:00', 2150),
+('Az Emberiség Nyomában', 'Civilizációk fejlődése', 'Dokumentumfilm', 120, '2026-01-28 19:00:00', 2400),
+
+('Rejtett Titkok', 'Dokumentumfilm rejtélyes jelenségekről', 'Dokumentumfilm', 99, '2026-02-02 20:30:00', 1950),
+('Kis Hősök', 'Gyerekek nagy tettekkel', 'Családi', 104, '2026-02-05 16:00:00', 1800),
+('Hegyek Világa', 'Természetfilm a hegyvidékekről', 'Természetfilm', 108, '2026-02-08 18:15:00', 2050),
+('Föld Alatt', 'Dokumentumfilm barlangokról', 'Dokumentumfilm', 122, '2026-02-11 20:00:00', 2250),
+('Állatok Birodalma', 'A világ különleges állatai', 'Természetfilm', 97, '2026-02-13 17:45:00', 2100),
+('Édes Otthon', 'Családi film a mindennapokról', 'Családi', 98, '2026-02-16 15:30:00', 1750),
+('A Planéta Ereje', 'Természetfilm bolygónk erejéről', 'Természetfilm', 102, '2026-02-18 19:30:00', 2300),
+('A Világ Története', 'Korszakokon át vezető dokumentumfilm', 'Dokumentumfilm', 126, '2026-02-21 18:00:00', 2450),
+('A Tavasz Hangjai', 'Családi film tavaszi történetekkel', 'Családi', 101, '2026-02-24 14:15:00', 1850),
+
+('Óriások Kora', 'Természetfilm a nagytestű állatokról', 'Természetfilm', 93, '2026-03-02 17:00:00', 2200),
+('Az Ősi Városok', 'Dokumentumfilm legendás városokról', 'Dokumentumfilm', 109, '2026-03-04 19:45:00', 2350),
+('Kaland a Városban', 'Családi vígjáték', 'Családi', 95, '2026-03-07 15:00:00', 1650),
+('Erdei Csodák', 'Természetfilm a világ erdeiről', 'Természetfilm', 101, '2026-03-10 20:00:00', 2150),
+('A Végtelen Ég', 'Dokumentumfilm az égbolt titkairól', 'Dokumentumfilm', 117, '2026-03-13 18:30:00', 2400),
+('Tavaszi Kacaj', 'Családi film vidám jelenetekkel', 'Családi', 93, '2026-03-17 16:20:00', 1700),
+('A Vadon Hívása', 'Természetfilm a vadon életéről', 'Természetfilm', 106, '2026-03-21 19:20:00', 2200);
+
+
+CREATE TABLE foglalas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vetites_id INT NOT NULL,
+    sor INT NOT NULL,
+    szek INT NOT NULL,
+    FOREIGN KEY (vetites_id) REFERENCES vetites(id) ON DELETE CASCADE
+);
+
+INSERT INTO foglalas (vetites_id, sor, szek)
+VALUES
+(1, 5, 12),
+(1, 5, 13),
+(2, 3, 7),
+(3, 8, 4);
+
+
+CREATE TABLE ertekeles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vetites_id INT NOT NULL,
+    vetites_cim VARCHAR(200) NOT NULL,
+    csillag INT CHECK (csillag BETWEEN 1 AND 5),
+    FOREIGN KEY (vetites_id) REFERENCES vetites(id) ON DELETE CASCADE
+);
+
+INSERT INTO ertekeles (vetites_id, vetites_cim, csillag)
+VALUES
+(1, 'Avatar 2', 5),
+(1, 'Avatar 2', 4),
+(2, 'Pókember: Nincs hazaút', 5),
+(3, 'Dűne 2', 3);
