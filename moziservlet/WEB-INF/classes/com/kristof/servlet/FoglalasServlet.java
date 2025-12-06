@@ -11,7 +11,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 public class FoglalasServlet extends HttpServlet {
 
@@ -30,36 +29,46 @@ public class FoglalasServlet extends HttpServlet {
         out.println("<meta charset='UTF-8'>");
         out.println("<title>Foglalás</title>");
         out.println("<link rel='stylesheet' href='menu.css'>");
-        out.println("<link rel='stylesheet' href='foglalas.css'>");
+        out.println("<link rel='stylesheet' href='gomb.css'>");
+
+       
+        out.println("<style>");
+        out.println("body { font-family: Arial; background: #f4f4f4; }");
+        out.println("h1 { text-align: center; }");
+        out.println(".container { width: 600px; margin: 0 auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }");
+        out.println(".row { margin: 10px 0; text-align: center; }");
+        out.println("label { margin: 5px; display: inline-block; }");
+        out.println("</style>");
+
         out.println("</head>");
         out.println("<body>");
 
+        out.println("<div class='container'>");
         out.println("<h1>Helyfoglalás</h1>");
         out.println("<form method='POST' action='foglalas'>");
 
         out.println("<input type='hidden' name='vetites_id' value='" + vetitesId + "'>");
 
         out.println("<div class='seats'>");
-        int seatNum = 1;
 
-        for (int sor = 1; sor <= 5; sor++) {
+        for (int sor = 1; sor <= 10; sor++) {
             out.println("<div class='row'>Sor " + sor + ": ");
-            for (int szek = 1; szek <= 4; szek++) {
+            for (int szek = 1; szek <= 5; szek++) {
                 out.println("<label>");
                 out.println("<input type='checkbox' name='szek' value='" + sor + "-" + szek + "'>");
                 out.println("[" + sor + "/" + szek + "]");
-                out.println("</label> ");
-                seatNum++;
+                out.println("</label>");
             }
-            out.println("</div><br>");
+            out.println("</div>");
         }
 
         out.println("</div>");
-        out.println("<button type='submit'>Foglalás mentése</button>");
+        out.println("<button class='gomb' type='submit'>Foglalás mentése</button>");
         out.println("</form>");
+        out.println("</div>");
+
         out.println("</body></html>");
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -90,7 +99,8 @@ public class FoglalasServlet extends HttpServlet {
             }
 
             out.println("<h1>Foglalások sikeresen elmentve!</h1>");
-            out.println("<a href='foglalasok'>Foglalások listája</a>");
+            out.println("<link rel='stylesheet' href='gomb.css'>");
+            out.println("<a class='gomb' href='foglalasok'>Foglalások listája</a>");
 
         } catch (SQLException e) {
             out.println("<h2>Hiba történt mentés közben!</h2>");
@@ -98,3 +108,5 @@ public class FoglalasServlet extends HttpServlet {
         }
     }
 }
+
+

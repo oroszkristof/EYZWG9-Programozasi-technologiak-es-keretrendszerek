@@ -77,7 +77,7 @@ public class ErtekelesFelvitelServlet extends HttpServlet {
 
         try (Connection conn = Kapcsolat.getKapcsolat()) {
 
-            // Cím lekérése (az ertekeles táblába is kell)
+            
             String cimSql = "SELECT cim FROM vetites WHERE id = ?";
             PreparedStatement cimPs = conn.prepareStatement(cimSql);
             cimPs.setInt(1, vetitesId);
@@ -85,7 +85,7 @@ public class ErtekelesFelvitelServlet extends HttpServlet {
             cimRs.next();
             String cim = cimRs.getString("cim");
 
-            // Beszúrás az ertekeles táblába
+            
             String insertSql =
                     "INSERT INTO ertekeles (vetites_id, vetites_cim, csillag) VALUES (?, ?, ?)";
             PreparedStatement insPs = conn.prepareStatement(insertSql);

@@ -24,6 +24,7 @@ public class BejelentkezesServlet extends HttpServlet {
                 <meta charset='UTF-8'>
                 <title>Bejelentkezés</title>
                 <link rel='stylesheet' href='urlap.css'>
+                <link rel='stylesheet' href='gombok.css'>
             </head>
             <body>
 
@@ -37,11 +38,11 @@ public class BejelentkezesServlet extends HttpServlet {
                     <label>Jelszó:</label>
                     <input type='password' name='jelszo' required>
 
-                    <button type='submit'>Bejelentkezés</button>
+                    <button type='submit' class='btn-primary'>Bejelentkezés</button>
                 </form>
 
                 <p>Nincs még fiókja?
-                    <a href='regisztracio'>Regisztráljon!</a>
+                    <a href='regisztracio' class='btn-link'>Regisztráljon!</a>
                 </p>
             </div>
 
@@ -76,9 +77,24 @@ public class BejelentkezesServlet extends HttpServlet {
                 resp.sendRedirect("vetitesek");
 
             } else {
+
                 PrintWriter out = resp.getWriter();
-                out.println("<h1>Hibás email vagy jelszó!</h1>");
-                out.println("<a href='bejelentkezes'>Vissza</a>");
+                out.println("""
+                    <!DOCTYPE html>
+                    <html lang='hu'>
+                    <head>
+                        <meta charset='UTF-8'>
+                        <title>Hiba</title>
+                        <link rel='stylesheet' href='gomb.css'>
+                    </head>
+                    <body>
+
+                    <h1>Hibás email vagy jelszó!</h1>
+                    <a href='bejelentkezes' class='gomb'>Vissza a bejelentkezéshez!</a>
+
+                    </body>
+                    </html>
+                """);
             }
 
         } catch (SQLException e) {
@@ -86,3 +102,59 @@ public class BejelentkezesServlet extends HttpServlet {
         }
     }
 }
+
+package com.kristof.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
+
+import com.kristof.db.Kapcsolat;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
+
+/* Itt kezelem a bejelentkezés megjelenítését és feldolgozását. */
+public class BejelentkezesServlet extends HttpServlet {
+
+    @Override
+    /* Itt jelenítem meg a bejelentkezési űrlapot a felhasználónak. */
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        resp.setContentType("text/html; charset=UTF-8");
+
+        PrintWriter out = resp.getWriter();
+        out.println("""
+            <!DOCTYPE html>
+            <html lang='hu'>
+            <head>
+                <meta charset='UTF-8'>
+                <title>Bejelentkezés</title>
+                <link rel='stylesheet' href='urlap.css'>
+                <link rel='stylesheet' href='gombok.css'>
+            </head>
+            <body>
+
+            <div class='container form-box'>
+                <h2>Bejelentkezés</h2>
+
+                <form action='bejelentkezes' method='POST'>
+                    <label>Email:</label>
+                    <input type='email' name='email' required>
+
+                    <label>Jelszó:</label>
+                    <input type='password' name='jelszo' required>
+
+                    <button type='submit' class='btn-primary'>Bejelentkezés</button>
+                </form>
+
+                <p>Nincs még fiókja?
+                    <a href='regisztracio' class='btn-link'>Regisztráljon!</a>
+                </p>
+            </div>
+
+            </body>
+            </html>
+        """);
+    }
+

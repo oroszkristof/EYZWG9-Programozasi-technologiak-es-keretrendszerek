@@ -31,11 +31,10 @@ public class ErtekelesListaServlet extends HttpServlet {
         out.println("<title>Értékelések</title>");
         out.println("<link rel='stylesheet' href='kartya.css'>");
         out.println("<link rel='stylesheet' href='menu.css'>");
-        out.println("<link rel='stylesheet' href='gomb.css'>");   // ← gombok stílusa
+        out.println("<link rel='stylesheet' href='gomb.css'>");   
         out.println("</head>");
         out.println("<body>");
 
-        // 🔵 Menüsor
         Object user = req.getSession().getAttribute("felhasznalo");
         out.println("<nav class='menu'>");
         if (user == null) {
@@ -49,13 +48,13 @@ public class ErtekelesListaServlet extends HttpServlet {
         }
         out.println("</nav>");
 
-        // 🔵 Gomb a jobb felső sarokban
+       
         out.println("<div style='text-align:right; margin:20px;'>");
         out.println("<a class='gomb' href='ertekeles-felvitel'>Új értékelés hozzáadása</a>");
         out.println("</div>");
 
         out.println("<h1>Értékelések listája</h1>");
-        out.println("<div class='card-container'>"); // GRID
+        out.println("<div class='card-container'>");
 
         try (Connection conn = Kapcsolat.getKapcsolat()) {
 
@@ -86,7 +85,10 @@ public class ErtekelesListaServlet extends HttpServlet {
             e.printStackTrace(out);
         }
 
-        out.println("</div>"); // GRID vége
+        out.println("</div>"); 
         out.println("</body></html>");
     }
 }
+
+
+

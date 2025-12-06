@@ -47,7 +47,7 @@ if (user == null) {
 out.println("</nav>");
 
         out.println("<h1>Foglalások listája</h1>");
-        out.println("<div class='card-container'>");  // GRID kezdete
+        out.println("<div class='card-container'>");  
 
         try (Connection conn = Kapcsolat.getKapcsolat()) {
 
@@ -61,13 +61,13 @@ out.println("</nav>");
                 String cim = vetRs.getString("cim");
                 String idopont = vetRs.getString("idopont");
 
-                out.println("<div class='card'>");  // 🔵 Egy vetítés kártya
+                out.println("<div class='card'>"); 
 
                 out.println("<h3>" + cim + "</h3>");
                 out.println("<p><b>Időpont:</b> " + idopont + "</p>");
                 out.println("<p><b>Foglalt helyek:</b></p>");
 
-                // Foglalások lekérése
+                
                 String helySql = "SELECT sor, szek FROM foglalas WHERE vetites_id = ?";
                 PreparedStatement helyPs = conn.prepareStatement(helySql);
                 helyPs.setInt(1, vetitesId);
@@ -90,7 +90,7 @@ out.println("</nav>");
                     out.println("<p>Nincs foglalt hely ennél a vetítésnél.</p>");
                 }
 
-                out.println("</div>"); // kártya vége
+                out.println("</div>"); 
             }
 
         } catch (SQLException e) {
@@ -98,7 +98,7 @@ out.println("</nav>");
             e.printStackTrace(out);
         }
 
-        out.println("</div>"); // GRID vége
+        out.println("</div>"); 
         out.println("</body></html>");
     }
 }

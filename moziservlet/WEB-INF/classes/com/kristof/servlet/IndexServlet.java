@@ -60,7 +60,7 @@ public class IndexServlet extends HttpServlet {
         
         out.println("<div class='right-text'>");
         out.println("<h1>Üdvözlöm a mozis jegyfoglaló rendszerben!</h1>");
-        out.println("<p>Nézzen körül a mozis kínálatban, válasszon egy filmet és foglaljon helyet!</p>");
+        out.println("<p>Nézzen körül a mozis kínálatban, válasszon egy filmet és foglaljon jegyet online!</p>");
         out.println("</div>");
 
         out.println("</div>"); 
