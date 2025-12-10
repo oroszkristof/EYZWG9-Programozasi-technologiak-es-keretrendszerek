@@ -79,7 +79,7 @@ public class RegisztracioServlet extends HttpServlet {
 
             ps.executeUpdate();
 
-            // Sikeres regisztráció → átirányítás a bejelentkezésre
+      
             resp.sendRedirect("bejelentkezes");
 
         } catch (SQLException e) {

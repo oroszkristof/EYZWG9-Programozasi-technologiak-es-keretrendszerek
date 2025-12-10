@@ -1,0 +1,40 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+
+.left-img {
+    width: 45%;
+}
+
+.left-img img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.right-text {
+    width: 45%;
+    text-align: right;
+    padding: 20px;
+}
+
+.right-text h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.right-text p {
+    font-size: 18px;
+    font-weight: bold;
+}

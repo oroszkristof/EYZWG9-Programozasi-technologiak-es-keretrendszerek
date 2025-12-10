@@ -16,8 +16,8 @@ public class Kapcsolat {
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(
-                    "Nem található a MariaDB JDBC driver. Ellenőrizd, hogy a mariadb-java-client JAR a WEB-INF/lib mappában van-e!",
-                    e
+                    "Nem található a MariaDB JDBC driver. Ellenőrizze, hogy a mariadb-java-client JAR a WEB-INF/lib mappában van-e!",
+              
             );
         }
     }
